@@ -1,0 +1,35 @@
+CREATE product COMPONENT INSIDE products FOLDER
+in products folder : ng g c product
+
+CONFIGURE ROUTE IN app.module
+{ path: 'products/:id',
+        component: ProductComponent },
+
+
+SET UP ROUTERLINK AND PARAMETER IN products.component.html TO PASS PARAMETERS
+replace
+<td>{{ product.productName | touppercase }}</td>
+with
+          <td>
+            <a [routerLink]="['/product', product.productId]">
+              {{ product.productName }}
+            </a>
+          </td>
+
+FETCHING THE ROUTE PARAMETER IN product.component.ts
+import { ActivatedRoute, Router } from '@angular/router';
+
+dependency inject ActivatedRoute
+  constructor(private route: ActivatedRoute) {
+    console.log(this.route.snapshot.paramMap.get('id'));
+    }
+
+USING THE PRODUCT ProductsService in product.component.ts
+modify the constructor to have the ProductsService dependency injected, import the required.
+  constructor(
+    private route: ActivatedRoute,
+    private productService: ProductsService
+  ) {
+    this.productId = +this.route.snapshot.paramMap.get('productId');
+    console.log(this.productId);
+  }

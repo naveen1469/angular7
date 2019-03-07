@@ -1,0 +1,12 @@
+
+
+<div class="card" style="width: 300px; color:seagreen; background:powderblue;">
+  <br>
+  <span style="text-align:center"> <img [src]='product.image' [style.width.px]='100' class="card-img-top" alt="..."></span>
+
+  <div class="card-body">
+    <h5 class="card-title">{{product.productName}}</h5>
+    <p class="card-text">Price : {{product.price}}  <br>Stars : {{product.starRating}}</p>
+    <button class="btn btn-success" (click)='toProducts()'><i class='fa  fa-chevron-circle-left'></i>&nbsp;&nbsp;&nbsp;Products </button>
+  </div>
+</div>
